@@ -13,7 +13,7 @@ Every command pulls your full context, connects to your tools, and executes like
 
 It’s time to become a 100x Product Manager.
 
-Built by Product Faculty’s #1 AI PM Certification: trusted by 3,000+ PMs (1,000+ reviews) learning how to build and operate AI-native products.
+[Built by Product Faculty’s #1 AI PM Certification](https://maven.com/product-faculty/ai-product-management-certification?promoCode=git): trusted by 3,000+ PMs (1,000+ reviews) learning how to build and operate AI-native products.
 
 ---
 
