@@ -1,6 +1,6 @@
 # PM Copilot — The AI-Native PM Operating System
 
-###Plugin for Claude Code, Claude Cowork, Claude Desktop, and Claude.ai Web | v2.1 | Product Faculty
+### Plugin for Claude Code, Claude Cowork, Claude Desktop, and Claude.ai Web | v2.1 | Product Faculty
 
 Stop working like a 2022 PM. Start operating like an AI-native one.
 
