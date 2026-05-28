@@ -19,8 +19,8 @@ PM-Copilot is maintained as a **separate open source project**. The easiest way 
    ```
 
 2. Run the interactive setup script:
-   - **Windows**: `.\setup-rovodev.ps1`
-   - **Linux / macOS / WSL**: `./setup-rovodev.sh`
+   - **Windows**: `.\pm-copilot-setup.ps1`
+   - **Linux / macOS / WSL**: `./pm-copilot-setup.sh`
 
 3. The script will ask:
    - Which platform you want to install for (Rovo Dev or Grok)
@@ -75,8 +75,8 @@ PM-Copilot is designed to be used as a **separate repository**. The easiest way 
 
 1. Clone this repository.
 2. Run the setup script from inside the `pm-copilot` folder:
-   - Windows: `.\setup-rovodev.ps1`
-   - Linux/macOS: `./setup-rovodev.sh`
+   - Windows: `.\pm-copilot-setup.ps1`
+   - Linux/macOS: `./pm-copilot-setup.sh`
 3. The script will ask you for the path to your actual product project and copy the configuration there.
 4. Start Rovo Dev inside your product project and say: "Run PM Copilot onboarding"
 

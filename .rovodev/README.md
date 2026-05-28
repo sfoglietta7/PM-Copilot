@@ -59,11 +59,11 @@ Rovo Dev supports two installation locations. Understanding the difference is cr
 
 | Goal                              | Recommended Action |
 |-----------------------------------|--------------------|
-| Use with a **team**               | Keep `.rovodev/` in the repo root (current structure). Use the `setup-rovodev` scripts. |
+| Use with a **team**               | Keep `.rovodev/` in the repo root (current structure). Use the `pm-copilot-setup` scripts. |
 | Use **personally across all projects** | Selectively copy only `skills/` and `subagents/` to `~/.rovodev/`. Keep `context/`, `memory/`, and `AGENTS.md` at project level. |
 | Quick personal experiment         | You *can* copy everything to `~/.rovodev/`, but expect to clean up context/memory later. |
 
-The setup scripts (`setup-rovodev.ps1` and `setup-rovodev.sh`) already support the smart hybrid pattern: they run project memory init by default and *optionally* copy only skills/subagents to your user folder.
+The setup scripts (`pm-copilot-setup.ps1` and `pm-copilot-setup.sh`) already support the smart hybrid pattern: they run project memory init by default and *optionally* copy only skills/subagents to your user folder.
 
 ---
 
@@ -82,13 +82,13 @@ Because PM-Copilot is maintained as a **separate repository**, the recommended w
 2. **Run the setup script from inside the PM-Copilot folder**
    ```powershell
    # Windows
-   .\setup-rovodev.ps1
+   .\pm-copilot-setup.ps1
    ```
 
    ```bash
    # Linux / macOS / WSL
-   chmod +x setup-rovodev.sh
-   ./setup-rovodev.sh
+   chmod +x pm-copilot-setup.sh
+   ./pm-copilot-setup.sh
    ```
 
 3. **The script will ask you**:
@@ -184,8 +184,8 @@ PM Copilot for Rovo Dev is designed to work on both **Windows (PowerShell)** and
 
 This repository includes ready-to-use interactive setup scripts in the root:
 
-- `setup-rovodev.ps1` — Windows (PowerShell)
-- `setup-rovodev.sh` — Linux, macOS, and WSL
+- `pm-copilot-setup.ps1` — Windows (PowerShell)
+- `pm-copilot-setup.sh` — Linux, macOS, and WSL
 
 These scripts are the easiest way for other teams to adopt PM-Copilot. They will:
 - Ask you for the path to your actual product project
@@ -203,7 +203,7 @@ The recommended way to share PM Copilot across a team:
 
 - **Commit `.rovodev/` to your repository** (or a dedicated internal repo).
 - Everyone on the team gets the same skills, subagents, and context templates automatically.
-- Use the provided `setup-rovodev.ps1` (Windows) or `setup-rovodev.sh` (Linux/macOS) scripts in the repo root. These run `/memory init` and offer to install user-level skills.
+- Use the provided `pm-copilot-setup.ps1` (Windows) or `pm-copilot-setup.sh` (Linux/macOS) scripts in the repo root. These run `/memory init` and offer to install user-level skills.
 
 For broader access (non-dev stakeholders), also publish a version as a **Rovo Agent** in Rovo Studio using the content from `AGENTS.md` and key skills as knowledge sources.
 
