@@ -2,7 +2,7 @@
   "name": "pm-copilot",
   "version": "2.2.0",
   "description": "The AI-native PM operating system — deep, framework-grounded PM skills, sub-agents, persistent memory, and context for product teams. Works best with Grok's native subagents and memory.",
-  "author": "Product Faculty",
+  "author": "Product Faculty (extended to Grok by Steven Foglietta)",
   "license": "Apache-2.0",
   "platforms": ["grok"],
   "homepage": "https://github.com/your-org/pm-copilot",
