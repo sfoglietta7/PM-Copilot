@@ -81,6 +81,21 @@ fi
 
 # Copy main config
 TARGET_FOLDER="$TARGET_DIR/$TARGET_SUBDIR"
+
+# Critical safety guard: Never allow deletion of the project root itself
+if [ "$TARGET_FOLDER" = "$TARGET_DIR" ] || [ -z "$TARGET_SUBDIR" ]; then
+    echo ""
+    echo "CRITICAL SAFETY ABORT:"
+    echo "The script detected an attempt to target the project root directory itself for deletion."
+    echo "This is not allowed and has been blocked to protect your files."
+    echo ""
+    echo "TargetDir: $TARGET_DIR"
+    echo "TargetSubdir: '$TARGET_SUBDIR'"
+    echo ""
+    echo "Please report this as a bug. No files were deleted."
+    exit 1
+fi
+
 if [ -d "$TARGET_FOLDER" ]; then
     echo ""
     echo "WARNING: $TARGET_SUBDIR already exists."

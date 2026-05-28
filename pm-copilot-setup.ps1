@@ -84,6 +84,21 @@ if ($InstallGrokPluginProject) {
 
 # === Copy main configuration ===
 $TargetFolder = Join-Path $TargetDir $TargetSubdir
+
+# Critical safety guard: Never allow deletion of the project root itself
+if ($TargetFolder -eq $TargetDir -or [string]::IsNullOrWhiteSpace($TargetSubdir)) {
+    Write-Host ""
+    Write-Host "CRITICAL SAFETY ABORT:" -ForegroundColor Red
+    Write-Host "The script detected an attempt to target the project root directory itself for deletion." -ForegroundColor Red
+    Write-Host "This is not allowed and has been blocked to protect your files." -ForegroundColor Red
+    Write-Host ""
+    Write-Host "TargetDir: $TargetDir" -ForegroundColor Yellow
+    Write-Host "TargetSubdir: '$TargetSubdir'" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "Please report this as a bug. No files were deleted." -ForegroundColor Green
+    exit 1
+}
+
 if (Test-Path $TargetFolder) {
     Write-Host ""
     Write-Host "WARNING: $TargetSubdir already exists in the target directory." -ForegroundColor Red
