@@ -33,27 +33,30 @@ else
     PLATFORM="grok"
     echo "Grok selected."
 
-    echo ""
-    echo "How would you like to install PM Copilot for Grok?"
-    echo "  1) Install as Grok Plugin (Recommended - User level)"
-    echo "  2) Install as Grok Plugin (Project level)"
-    echo "  3) Just copy the .grok/ folder (no plugin)"
-    echo ""
-    read -rp "Enter 1, 2 or 3 [default: 1]: " GROK_METHOD
-    GROK_METHOD=${GROK_METHOD:-1}
+    # Always prepare to copy the .grok folder
+    SOURCE_DIR="$SCRIPT_DIR/.grok"
+    TARGET_SUBDIR=".grok"
 
-    if [ "$GROK_METHOD" = "1" ]; then
+    echo ""
+    echo "Grok Plugin Installation"
+    echo "Would you like to also install the official PM Copilot Grok plugin?"
+    echo "  1) Yes – User level (recommended)"
+    echo "  2) Yes – Project level"
+    echo "  3) No – Only copy the .grok/ folder"
+    echo ""
+    read -rp "Enter 1, 2 or 3 [default: 1]: " GROK_PLUGIN_CHOICE
+    GROK_PLUGIN_CHOICE=${GROK_PLUGIN_CHOICE:-1}
+
+    if [ "$GROK_PLUGIN_CHOICE" = "1" ]; then
         PLUGIN_TARGET="$HOME/.grok/plugins/pm-copilot"
         INSTALL_PLUGIN=true
-        echo "Will install Grok plugin to user level: $PLUGIN_TARGET"
-    elif [ "$GROK_METHOD" = "2" ]; then
+        echo "Will install Grok plugin to user level."
+    elif [ "$GROK_PLUGIN_CHOICE" = "2" ]; then
         INSTALL_PLUGIN=true
         INSTALL_PLUGIN_PROJECT=true
-        echo "Will install Grok plugin at project level (after target directory is known)."
+        echo "Will install Grok plugin at project level (after target directory is chosen)."
     else
-        SOURCE_DIR="$SCRIPT_DIR/.grok"
-        TARGET_SUBDIR=".grok"
-        echo "Installing .grok/ folder only."
+        echo "Will only copy the .grok/ folder (no plugin)."
     fi
 fi
 
