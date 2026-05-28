@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "@linear/mcp-server@latest"],
+      "env": {
+        "LINEAR_API_KEY": "${LINEAR_API_KEY}"
+      },
+      "description": "Read issues, roadmap state, sprint backlog; write tickets; update status"
+    },
+    "jira": {
+      "command": "npx",
+      "args": ["-y", "@atlassian/jira-mcp@latest"],
+      "env": {
+        "JIRA_URL": "${JIRA_URL}",
+        "JIRA_EMAIL": "${JIRA_EMAIL}",
+        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
+      },
+      "description": "Read Jira board, backlog, sprint state; create and update issues. Note: Rovo Dev also has strong native Jira access via Teamwork Graph."
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server@latest"],
+      "env": {
+        "NOTION_API_KEY": "${NOTION_API_KEY}"
+      },
+      "description": "Read and write spec pages, search knowledge base, pull meeting notes"
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@slack/mcp-server@latest"],
+      "env": {
+        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
+      },
+      "description": "Pull channel context, read thread sentiment, send stakeholder updates"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@github/github-mcp-server@latest"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "description": "Read issue backlog, check PR velocity, correlate engineering output with roadmap"
+    }
+  }
+}

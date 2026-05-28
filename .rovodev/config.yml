@@ -1,0 +1,118 @@
+# PM Copilot — Rovo Dev Configuration
+# Optimized for senior product management workflows
+
+agent:
+  # Additional instructions appended to Rovo Dev's base system prompt
+  additionalSystemPrompt: |
+    You are operating as PM Copilot — an AI-native senior product partner.
+    Always ground your work in the user's specific product context from memory and .rovodev/context/.
+    Follow the quality bar defined in .rovodev/AGENTS.md without exception:
+    - End major deliverables with "Did we solve the right problem?"
+    - Call out explicit out-of-scope items
+    - Surface surprising failure modes
+    - Define 30-day measurable success metrics
+    - Carry open questions into memory
+
+  streaming: true
+  temperature: 0.3
+  modelId: "auto"
+
+  # Enable deep planning for complex PM workflows (discovery, strategy, PRDs)
+  enableDeepPlanTool: true
+
+# Tool permissions tuned for productive PM work
+toolPermissions:
+  default: "ask"
+
+  tools:
+    # Safe read operations — allow by default
+    open_files: "allow"
+    expand_code_chunks: "allow"
+    expand_folder: "allow"
+    grep: "allow"
+    getJiraIssue: "allow"
+    getConfluencePage: "allow"
+
+    # Write operations — ask for confirmation (change to "allow" for trusted environments)
+    create_file: "ask"
+    delete_file: "ask"
+    move_file: "ask"
+    find_and_replace_code: "ask"
+    createJiraIssue: "ask"
+    updateJiraIssue: "ask"
+    createConfluencePage: "ask"
+    updateConfluencePage: "ask"
+
+    # Planning and research tools
+    createTechnicalPlan: "allow"
+
+  # Shell command permissions
+  # Rovo Dev uses different shells depending on the OS:
+  # - Windows: PowerShell (default) or Git Bash / WSL
+  # - Linux / macOS: bash / zsh
+  #
+  # Configure both sections for best cross-platform experience.
+
+  bash:
+    default: "ask"
+    commands:
+      - command: "ls.*"
+        permission: "allow"
+      - command: "cat.*"
+        permission: "allow"
+      - command: "pwd"
+        permission: "allow"
+      - command: "git status"
+        permission: "allow"
+      - command: "git log.*"
+        permission: "allow"
+
+  powershell:
+    default: "ask"
+    commands:
+      - command: "Get-ChildItem.*|ls.*|dir.*"
+        permission: "allow"
+      - command: "Get-Content.*|cat.*|type.*"
+        permission: "allow"
+      - command: "Get-Location.*|pwd"
+        permission: "allow"
+      - command: "git status"
+        permission: "allow"
+      - command: "git log.*"
+        permission: "allow"
+
+  allowedExternalPaths: []
+
+# MCP configuration
+mcp:
+  mcpConfigPath: ".rovodev/mcp.json"
+  allowedMcpServers: []
+  disabledMcpServers: []
+
+# Atlassian connections (customize for your site)
+atlassianConnections:
+  enabled: true
+  jiraProjects: []
+  # Example:
+  # - url: "https://yourcompany.atlassian.net/browse/TEAM"
+  #   key: "TEAM"
+  #   name: "Your Team"
+
+# Console and experience settings
+console:
+  outputFormat: "markdown"
+  showToolResults: true
+  editingMode: "EMACS"
+  theme: "textual-dark"
+  maxOutputWidth: 120
+  enableStartupAnimations: true
+  copyOnSelect: true
+
+# Logging
+logging:
+  path: "~/.rovodev/logs/rovodev.log"
+
+# Rovo Dev credits site (optional — set if you have a specific billing site)
+# atlassianBillingSite:
+#   siteUrl: "https://yourcompany.atlassian.net"
+#   cloudId: "your-cloud-id"
