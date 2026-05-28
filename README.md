@@ -1,45 +1,34 @@
 # PM Copilot — The AI-Native PM Operating System
 
+> **Multi-platform support for Rovo Dev and Grok added by Steven Foglietta.**
+
 **Product Faculty** • Trusted by 3,000+ product managers
 
 PM Copilot is a comprehensive, framework-grounded AI partner for product managers. It combines deep PM expertise (Teresa Torres, Marty Cagan, Bob Moesta, April Dunford, Lenny Rachitsky, and others) with persistent memory, reusable skills, specialized sub-agents, and live tool integrations.
 
 It turns your AI into a true senior PM teammate that knows your product, your stakeholders, your roadmap, and your working style — so you never have to re-brief it.
 
----
+### Multi-Platform Support
 
-## Getting Started
+PM Copilot was originally built for Claude. Support for **Rovo Dev** and **Grok** was added later while keeping the project as a clean, separate repository.
 
-PM-Copilot is maintained as a **separate open source project**. The easiest way for other teams to adopt it is:
+- **Rovo Dev**: Use the `.rovodev/` configuration
+- **Grok**: Use the Grok plugin in `plugins/grok-pm-copilot/` (recommended) or the `.grok/` folder
 
-1. Clone this repository:
-   ```bash
-   git clone <this-repo-url>
-   cd pm-copilot
-   ```
+The easiest way to install either is with the provided setup scripts:
 
-2. Run the interactive setup script:
-   - **Windows**: `.\pm-copilot-setup.ps1`
-   - **Linux / macOS / WSL**: `./pm-copilot-setup.sh`
+- **Windows**: `.\pm-copilot-setup.ps1`
+- **Linux / macOS / WSL**: `./pm-copilot-setup.sh`
 
-3. The script will ask:
-   - Which platform you want to install for (Rovo Dev or Grok)
-   - The full path to your actual product working directory
+These scripts will ask which platform you want and copy the correct files into your actual product project.
 
-4. It will copy the appropriate configuration (`.rovodev/` or `.grok/`) and guide you through initial setup.
-
-**For Grok users**: The recommended installation method is the Grok plugin located in `plugins/grok-pm-copilot/`.
-
-5. Start your AI tool inside your product directory and begin with:
-   ```
-   Run PM Copilot onboarding
-   ```
-
-The setup scripts include strong safety checks (they will not silently overwrite an existing configuration folder).
-
-For full details, platform-specific notes, and the shared `AGENTS.md`, see the [`.rovodev/README.md`](.rovodev/README.md) and root `AGENTS.md`.
+See the [`.rovodev/README.md`](.rovodev/README.md) for detailed platform-specific instructions.
 
 ---
+
+### Original Claude Support
+
+PM Copilot remains fully compatible with Claude environments:
 
 ## Supported Platforms
 
@@ -52,7 +41,7 @@ PM Copilot is designed to work across multiple AI environments:
 | **Claude.ai (Projects)** | Partial            | Skills + `CLAUDE.md` context work well. Slash commands and MCP require Claude Code/Cowork | Upload context files |
 | Other agents (Cursor, Windsurf, etc.) | Community / Partial | Many skills and `AGENTS.md` patterns are portable | Manual adaptation |
 
-**Best experience for teams**: Use the **Rovo Dev** version (this repo's `.rovodev/` folder). It gives you version-controlled PM tooling that travels with your codebase and leverages Atlassian's native context.
+**Best experience for teams**: Use either the Rovo Dev version (`.rovodev/`) or the Grok plugin, depending on your primary AI tool. Both provide version-controlled PM tooling that travels with your codebase.
 
 ---
 
@@ -69,7 +58,7 @@ PM Copilot is designed to work across multiple AI environments:
 
 ## Quick Start
 
-### For Rovo Dev Users (Recommended)
+### For Rovo Dev and Grok Users
 
 PM-Copilot is designed to be used as a **separate repository**. The easiest way for teams to adopt it is:
 
@@ -77,10 +66,8 @@ PM-Copilot is designed to be used as a **separate repository**. The easiest way 
 2. Run the setup script from inside the `pm-copilot` folder:
    - Windows: `.\pm-copilot-setup.ps1`
    - Linux/macOS: `./pm-copilot-setup.sh`
-3. The script will ask you for the path to your actual product project and copy the configuration there.
-4. Start Rovo Dev inside your product project and say: "Run PM Copilot onboarding"
-
-This keeps PM-Copilot clean as an open source project while making adoption simple for other companies.
+3. The script will ask you for the path to your actual product project and which platform you want to use.
+4. Start your AI tool (Rovo Dev or Grok) inside your product project and say: "Run PM Copilot onboarding"
 
 See [`.rovodev/README.md`](.rovodev/README.md) for the full recommended workflow and cross-platform notes.
 
@@ -90,19 +77,21 @@ See the `claude/` directory for the original Claude-optimized version (with `CLA
 
 ---
 
-## Project Structure (Rovo Dev Focus)
+## Project Structure
 
 ```
 pm-copilot/
-├── .rovodev/                  # Rovo Dev configuration (this is the main distribution)
-│   ├── AGENTS.md              # Global instructions + session protocols
-│   ├── config.yml             # Model, tool permissions, additional prompt
-│   ├── mcp.json               # External MCP tool connections
-│   ├── skills/                # 65+ reusable PM skills
-│   ├── subagents/             # 8 specialized agents
-│   ├── context/               # Your product/company context (fill these in)
-│   ├── memory/                # Memory schema + guidance
-│   └── README.md              # Rovo Dev specific guide
+├── .rovodev/                  # Rovo Dev configuration
+│   ├── AGENTS.md
+│   ├── skills/
+│   ├── subagents/
+│   ├── context/
+│   ├── memory/
+│   └── README.md
+│
+├── .grok/                     # Grok configuration (project-level)
+│
+├── plugins/grok-pm-copilot/   # Grok plugin (recommended install method for Grok)
 │
 ├── claude/                    # Original Claude plugin version (for Claude Code / Cowork)
 │   ├── CLAUDE.md
@@ -110,6 +99,9 @@ pm-copilot/
 │   ├── agents/
 │   ├── skills/
 │   └── ...
+│
+├── pm-copilot-setup.ps1
+├── pm-copilot-setup.sh
 │
 ├── README.md                  # This file
 └── LICENSE
@@ -137,4 +129,4 @@ Built by **Product Faculty** — the leading AI PM certification program.
 
 ---
 
-*PM Copilot v2.1 • Supports Rovo Dev + Claude ecosystems*
+*PM Copilot • Multi-platform support for Claude, Rovo Dev, and Grok*
