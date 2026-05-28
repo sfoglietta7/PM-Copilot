@@ -77,6 +77,34 @@ See the `claude/` directory for the original Claude-optimized version (with `CLA
 
 ---
 
+## Working Across Multiple Projects
+
+PM Copilot is designed to work cleanly across many different products and codebases.
+
+### Core Principle
+
+- **User-level installation** (Grok plugin or equivalent) installs the reusable skills and personas **once**. After that, they are available in every project.
+- **Project-level configuration** (the `.grok/` or `.rovodev/` folder) holds the actual context and memory for that specific product. This stays isolated per project.
+
+### Recommended Flow for a New Project
+
+When you start working on a second, third, or fourth product:
+
+1. Clone the new project.
+2. Navigate into the **PM-Copilot** repository.
+3. Run the setup script again:
+   - Windows: `.\pm-copilot-setup.ps1`
+   - Linux/macOS: `./pm-copilot-setup.sh`
+4. Choose your platform (Grok or Rovo Dev).
+5. When asked, select the **user-level** option for the plugin/skills (the script will detect that it is already installed and skip re-installation).
+6. Point the script at your new project directory.
+
+The script will create a fresh, isolated `.grok/` (or `.rovodev/`) folder inside the new project with its own context and memory profile. Your existing projects remain completely unaffected.
+
+This approach keeps each product's context, roadmap, stakeholders, and memory cleanly separated while still giving you the full power of PM Copilot everywhere.
+
+---
+
 ## Project Structure
 
 ```
