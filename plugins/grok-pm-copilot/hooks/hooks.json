@@ -1,0 +1,29 @@
+{
+  "hooks": [
+    {
+      "event": "session_start",
+      "description": "Automatically load PM Copilot context and AGENTS.md when starting in a project with the plugin installed.",
+      "action": {
+        "type": "load_files",
+        "files": [
+          "AGENTS.md",
+          "memory/user-profile.md",
+          "context/product/roadmap.md",
+          "context/product/personas.md"
+        ]
+      }
+    },
+    {
+      "event": "session_start",
+      "description": "If no PM memory profile exists yet, gently suggest running onboarding.",
+      "condition": {
+        "file_exists": "memory/user-profile.md",
+        "exists": false
+      },
+      "action": {
+        "type": "suggest_prompt",
+        "prompt": "Run PM Copilot onboarding to set up your product context, stakeholders, and working style."
+      }
+    }
+  ]
+}
